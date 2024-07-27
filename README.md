@@ -28,7 +28,7 @@ Almost all of the setup is handled by nix-darwin and home-manager.
 
 ## Installation
 
-TODO: Bootstrap the system using the following command:
+Bootstrap the system using the following command:
 
 ```bash
 yadm clone --bootstrap $REPO_URL
