@@ -25,6 +25,17 @@
       "com.apple.sound.beep.feedback" = 0;
       "com.apple.trackpad.scaling" = 2.0;
     };
+    menuExtraClock.ShowSeconds = true;
+    CustomUserPreferences = {
+      "/Users/0x77/Library/Preferences/ByHost/com.apple.controlcenter.plist" = {
+        "Bluetooth" = 18;
+        "Sound" = 16;
+        "BatteryShowPercentage" = 1;
+      };
+      "/Users/0x77/Library/Preferences/ByHost/com.apple.Spotlight.plist" = {
+        "MenuItemHidden" = 1;
+      };
+    };
     # universalaccess.closeViewScrollWheelToggle = true; # crashes...
   };
 
@@ -51,7 +62,6 @@
     neovim
     nodePackages.nodejs
     bun
-    rustc
     cargo
     nixpkgs-fmt
     nixfmt
