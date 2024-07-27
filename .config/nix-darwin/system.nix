@@ -81,5 +81,7 @@
     devenv
     cachix
     btop
+    httpie
+    binwalk
   ];
 }
