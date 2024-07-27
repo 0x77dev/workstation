@@ -75,5 +75,7 @@
     procs
     broot
     yazi
+    gh
+    fzf
   ];
 }

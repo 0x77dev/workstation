@@ -16,6 +16,7 @@
   programs.gh.enable = true;
   programs.gh.settings = {
     git_protocol = "ssh";
+    editor = "code --wait";
 
     prompt = "enabled";
 

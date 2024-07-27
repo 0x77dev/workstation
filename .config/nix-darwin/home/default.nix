@@ -15,6 +15,7 @@
     ./kitty.nix
     ./shell.nix
     ./browser.nix
+    ./ssh.nix
   ];
 
   home.packages = [
