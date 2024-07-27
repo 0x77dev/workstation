@@ -16,6 +16,7 @@
     ./shell.nix
     ./browser.nix
     ./ssh.nix
+    ./neovim.nix
   ];
 
   home.packages = [

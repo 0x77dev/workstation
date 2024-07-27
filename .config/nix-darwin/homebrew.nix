@@ -28,6 +28,7 @@
       "1password-cli"
       "keybase"
       "orbstack"
+      "slack"
     ];
 
     masApps = {

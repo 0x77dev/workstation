@@ -77,5 +77,9 @@
     yazi
     gh
     fzf
+    direnv
+    devenv
+    cachix
+    btop
   ];
 }
