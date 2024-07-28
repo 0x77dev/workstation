@@ -1,9 +1,4 @@
-{ config
-, lib
-, inputs
-, pkgs
-, ...
-}:
+{ config, lib, inputs, pkgs, ... }:
 
 {
   programs.neovim = {
@@ -12,8 +7,6 @@
     viAlias = true;
     vimAlias = true;
     vimdiffAlias = true;
-    plugins = with pkgs.vimPlugins; [
-      lazy-nvim
-    ];
+    plugins = with pkgs.vimPlugins; [ lazy-nvim ];
   };
 }

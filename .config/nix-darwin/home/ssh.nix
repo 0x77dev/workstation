@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 
-{ 
-  programs.ssh = { 
+{
+  programs.ssh = {
     enable = true;
     extraConfig = ''
       Host *
@@ -9,5 +9,6 @@
     '';
   };
 
-  home.file.".config/1Password/ssh/agent.toml".source = sources/1password-agent.toml;
+  home.file.".config/1Password/ssh/agent.toml".source =
+    sources/1password-agent.toml;
 }

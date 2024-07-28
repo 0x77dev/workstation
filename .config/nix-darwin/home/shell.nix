@@ -1,9 +1,4 @@
-{ config
-, lib
-, inputs
-, pkgs
-, ...
-}:
+{ config, lib, inputs, pkgs, ... }:
 
 {
   programs.bash.enable = true;
@@ -18,11 +13,10 @@
           set -g fish_user_paths $p $fish_user_paths
         end
       end
+      fish_add_path /opt/homebrew/bin
     '';
 
-    shellAliases = {
-      dc = "docker compose";
-    };
+    shellAliases = { dc = "docker compose"; };
 
     plugins = [
       {

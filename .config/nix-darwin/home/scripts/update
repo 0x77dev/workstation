@@ -1,0 +1,5 @@
+#!/bin/bash
+
+cd $HOME/.config/nix-darwin
+nix flake update
+yadm bootstrap

@@ -29,18 +29,8 @@
     };
   };
 
-  outputs =
-    inputs@{
-      self,
-      nix-darwin,
-      nixpkgs,
-      nix-homebrew,
-      homebrew-core,
-      homebrew-cask,
-      homebrew-bundle,
-      home-manager
-    }:
-    {
+  outputs = inputs@{ self, nix-darwin, nixpkgs, nix-homebrew, homebrew-core
+    , homebrew-cask, homebrew-bundle, home-manager }: {
       # Build darwin flake using:
       # $ darwin-rebuild build --flake .#0x77macbook2021
       darwinConfigurations."0x77macbook2021" = nix-darwin.lib.darwinSystem {

@@ -29,6 +29,7 @@
       "keybase"
       "orbstack"
       "slack"
+      "linear-linear"
     ];
 
     masApps = {

@@ -1,15 +1,9 @@
-{
-  config,
-  lib,
-  inputs,
-  pkgs,
-  ...
-}:
+{ config, lib, inputs, pkgs, ... }:
 
 {
   home.stateVersion = "24.11";
-  imports = [ 
-    ./vscode.nix 
+  imports = [
+    ./vscode.nix
     ./git.nix
     ./gpg.nix
     ./kitty.nix
@@ -17,6 +11,7 @@
     ./browser.nix
     ./ssh.nix
     ./neovim.nix
+    ./scripts.nix
   ];
 
   home.packages = [
@@ -34,11 +29,9 @@
   #     ".config/1Password/ssh/agent.toml".source = sources/1password-cli/agent.toml;
   #   };
 
-  home.sessionVariables = {
-    PROJECT_PATHS = "~/Projects/*";
-  };
+  home.sessionVariables = { PROJECT_PATHS = "~/Projects/*"; };
 
   programs.home-manager.enable = true;
-  
+
   fonts.fontconfig.enable = true;
 }

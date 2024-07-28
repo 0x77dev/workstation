@@ -9,7 +9,7 @@
   #   extensions = [
   #     { id = "cjpalhdlnbpafiamejdnhcphjbkeiagm"; }
   #   ];
-    
+
   #   package = pkgs.chromium;
   # };
 }
