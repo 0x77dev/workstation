@@ -11,25 +11,29 @@
     ./browser.nix
     ./ssh.nix
     ./neovim.nix
-    ./scripts.nix
   ];
 
   home.packages = [
+    # General
     pkgs.direnv
     pkgs.devenv
     pkgs.cachix
     pkgs.hello
     pkgs.gh
     pkgs.neovim-unwrapped
-    pkgs.jetbrains-mono
+
+    # Fonts
     (pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+    pkgs.jetbrains-mono
+
+    # Scripts
+    (pkgs.writeShellScriptBin "workstation-update" (builtins.readFile ./scripts/update))
+    (pkgs.writeShellScriptBin "workstation-commit" (builtins.readFile ./scripts/commit))
   ];
 
-  #   home.file = {
-  #     ".config/1Password/ssh/agent.toml".source = sources/1password-cli/agent.toml;
-  #   };
-
-  home.sessionVariables = { PROJECT_PATHS = "~/Projects/*"; };
+  home.sessionVariables = { 
+    PROJECT_PATHS = "~/Projects/*";
+  };
 
   programs.home-manager.enable = true;
 

@@ -62,6 +62,9 @@
         dbaeumer.vscode-eslint
         mkhl.direnv
         esbenp.prettier-vscode
+        vadimcn.vscode-lldb
+        ms-vscode.hexeditor
+        bradlc.vscode-tailwindcss
       ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
         {
           name = "cody-ai";

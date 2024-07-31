@@ -4,6 +4,9 @@
   homebrew = {
     enable = true;
     global.autoUpdate = false;
+    onActivation.autoUpdate = true;
+    onActivation.cleanup = "uninstall";
+    onActivation.upgrade = true;
 
     casks = [
       "arc"
@@ -30,6 +33,7 @@
       "orbstack"
       "slack"
       "linear-linear"
+      "gitbutler"
     ];
 
     masApps = {

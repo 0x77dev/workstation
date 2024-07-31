@@ -64,7 +64,7 @@
     bun
     cargo
     nixpkgs-fmt
-    nixfmt
+    nixfmt-classic
     yadm
     bat
     chafa
@@ -83,5 +83,8 @@
     btop
     httpie
     binwalk
+    jq
+    yq
+    nmap
   ];
 }
