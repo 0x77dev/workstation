@@ -25,8 +25,10 @@ fi
 
 . /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
 
-echo "Applying Nix configuration..."
-nix run nix-darwin --experimental-features 'nix-command flakes' -- switch --flake ~/.config/nix-darwin || exit 1
+FLAKE=${FLAKE:="$HOME/.config/nix-darwin"}
+
+echo "Applying Nix configuration from $FLAKE..."
+nix run nix-darwin --experimental-features 'nix-command flakes' -- switch --flake $FLAKE || exit 1
 
 if ! keybase whoami &> /dev/null; then
     read -p "Do you want to use Keybase for PGP key management? (y/n) " use_keybase

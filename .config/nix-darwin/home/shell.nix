@@ -48,6 +48,5 @@
     enableFishIntegration = true;
     enableBashIntegration = true;
     enableZshIntegration = true;
-    settings = { };
   };
 }

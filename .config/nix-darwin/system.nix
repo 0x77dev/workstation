@@ -86,5 +86,6 @@
     jq
     yq
     nmap
+    nixd
   ];
 }

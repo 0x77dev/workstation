@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   programs.vscode = {
@@ -6,6 +6,7 @@
     enableUpdateCheck = false;
     enableExtensionUpdateCheck = false;
     mutableExtensionsDir = false;
+
     userSettings = {
       "editor.inlineSuggest.suppressSuggestions" = true;
       "editor.fontFamily" = "'JetBrains Mono', monospace";
@@ -16,12 +17,14 @@
       "workbench.iconTheme" = "catppuccin-mocha";
       "workbench.colorTheme" = "GitHub Dark Default";
       "telemetry.telemetryLevel" = "off";
-      "editor.formatOnSave" = false;
+      "editor.formatOnSave" = true;
       "files.autoSave" = "afterDelay";
       "cody.autocomplete.formatOnAccept" = true;
       "editor.formatOnPaste" = true;
-      "editor.codeActionsOnSave" = { "source.organizeImports" = true; };
-      "files.autoSaveWhenNoErrors" = false;
+      "editor.codeActionsOnSave" = {
+        "source.organizeImports" = "explicit";
+      };
+      "files.autoSaveWhenNoErrors" = true;
       "terminal.integrated.profiles.osx" = {
         "bash" = {
           "path" = "bash";
@@ -38,6 +41,11 @@
           "args" = [ "-l" ];
         };
       };
+
+      "security.workspace.trust.enabled" = false;
+      "nix.enableLanguageServer" = true;
+      "nix.serverPath" = "${pkgs.nixd}/bin/nixd";
+      "nix.formatterPath" = "${pkgs.nixfmt-classic}/bin/nixpkgs-fmt";
     };
 
     extensions = with pkgs.vscode-extensions;
@@ -65,6 +73,7 @@
         vadimcn.vscode-lldb
         ms-vscode.hexeditor
         bradlc.vscode-tailwindcss
+        jnoortheen.nix-ide
       ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
         {
           name = "cody-ai";
