@@ -87,5 +87,7 @@
     yq
     nmap
     nixd
+    hwatch
+    shell-gpt
   ];
 }

@@ -46,6 +46,7 @@
       "nix.enableLanguageServer" = true;
       "nix.serverPath" = "${pkgs.nixd}/bin/nixd";
       "nix.formatterPath" = "${pkgs.nixfmt-classic}/bin/nixpkgs-fmt";
+      "git.confirmSync" = false;
     };
 
     extensions = with pkgs.vscode-extensions;
@@ -74,6 +75,7 @@
         ms-vscode.hexeditor
         bradlc.vscode-tailwindcss
         jnoortheen.nix-ide
+        supermaven.supermaven
       ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
         {
           name = "cody-ai";

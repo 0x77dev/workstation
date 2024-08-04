@@ -1,7 +1,6 @@
 { config, lib, inputs, pkgs, ... }:
 
 {
-  home.stateVersion = "24.11";
   imports = [
     ./vscode.nix
     ./git.nix
@@ -31,11 +30,11 @@
     (pkgs.writeShellScriptBin "workstation-commit" (builtins.readFile ./scripts/commit))
   ];
 
-  home.sessionVariables = { 
+  home.sessionVariables = {
     PROJECT_PATHS = "~/Projects/*";
   };
 
-  programs.home-manager.enable = true;
-
   fonts.fontconfig.enable = true;
+  programs.home-manager.enable = true;
+  home.stateVersion = "24.11";
 }
