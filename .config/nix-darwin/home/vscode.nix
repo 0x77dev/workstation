@@ -21,10 +21,10 @@
       "files.autoSave" = "afterDelay";
       "cody.autocomplete.formatOnAccept" = true;
       "editor.formatOnPaste" = true;
-      "editor.codeActionsOnSave" = {
-        "source.organizeImports" = "explicit";
-      };
+      "editor.codeActionsOnSave" = { "source.organizeImports" = "explicit"; };
       "files.autoSaveWhenNoErrors" = true;
+      "rust-analyzer.cachePriming.enable" = false;
+      "rust-analyzer.checkOnSave" = false;
       "terminal.integrated.profiles.osx" = {
         "bash" = {
           "path" = "bash";
@@ -76,6 +76,8 @@
         bradlc.vscode-tailwindcss
         jnoortheen.nix-ide
         supermaven.supermaven
+        streetsidesoftware.code-spell-checker
+        vadimcn.vscode-lldb
       ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
         {
           name = "cody-ai";
