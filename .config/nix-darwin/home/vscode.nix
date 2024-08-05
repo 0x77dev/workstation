@@ -46,7 +46,9 @@
       "nix.enableLanguageServer" = true;
       "nix.serverPath" = "${pkgs.nixd}/bin/nixd";
       "nix.formatterPath" = "${pkgs.nixfmt-classic}/bin/nixpkgs-fmt";
+      "direnv.path.executable" = "${pkgs.direnv}/bin/direnv";
       "git.confirmSync" = false;
+      "editor.defaultFormatter" = "esbenp.prettier-vscode";
     };
 
     extensions = with pkgs.vscode-extensions;

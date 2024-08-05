@@ -9,9 +9,8 @@
   nixpkgs.config.allowUnfree = true;
   nix.settings = {
     substituters =
-      [ "http://192.168.0.33:28265/workstation" "https://devenv.cachix.org" ];
+      [ "https://devenv.cachix.org" ];
     trusted-public-keys = [
-      "workstation:cg6baMXMpVzrRcGMQvORNVIKSPSzoODYSeAayneapQg="
       "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw="
     ];
     trusted-substituters = [ "root" "0x77" ];

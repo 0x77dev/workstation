@@ -89,5 +89,8 @@
     nixd
     hwatch
     shell-gpt
+    awscli2
+    kubectl
+    docker
   ];
 }
