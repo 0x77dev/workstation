@@ -28,7 +28,7 @@ fi
 FLAKE=${FLAKE:="$HOME/.config/nix-darwin"}
 
 echo "Applying Nix configuration from $FLAKE..."
-# nix run nix-darwin --experimental-features 'nix-command flakes' -- switch --flake $FLAKE || exit 1
+nix run nix-darwin --experimental-features 'nix-command flakes' -- switch --flake $FLAKE || exit 1
 
 echo "Setting up desktop wallpaper to $(dirname "$0")/assets/bg.jpg"
 osascript -e "tell application \"System Events\" to tell every desktop to set picture to \"$(dirname "$0")/assets/bg.jpg\" as POSIX file"
