@@ -92,5 +92,6 @@
     awscli2
     kubectl
     docker
+    ffmpeg
   ];
 }

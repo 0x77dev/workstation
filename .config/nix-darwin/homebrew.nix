@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ ... }:
 
 {
   homebrew = {
@@ -34,6 +34,7 @@
       "slack"
       "linear-linear"
       "gitbutler"
+      "zoom"
     ];
 
     masApps = {
