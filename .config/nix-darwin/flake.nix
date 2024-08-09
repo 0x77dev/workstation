@@ -67,7 +67,7 @@
         ];
       };
 
-      darwinConfigurations."0x77strada" = nix-darwin.lib.darwinSystem {
+      darwinConfigurations."0x77beefy" = nix-darwin.lib.darwinSystem {
         system = "aarch64-darwin";
         modules = [
           ./configuration.nix
@@ -100,6 +100,6 @@
       };
 
       # Expose the package set, including overlays, for convenience.
-      darwinPackages = self.darwinConfigurations."0x77macbook2021".pkgs;
+      darwinPackages = self.darwinConfigurations."0x77beefy".pkgs;
     };
 }
