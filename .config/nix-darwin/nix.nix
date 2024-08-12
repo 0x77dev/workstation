@@ -11,10 +11,14 @@
 
   nix.settings = {
     substituters =
-      [ "https://devenv.cachix.org" ];
+      [
+        "https://devenv.cachix.org"
+        "https://workstation.cachix.org"
+      ];
 
     trusted-public-keys = [
       "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw="
+      "workstation.cachix.org-1:jtYBF2Nijpg3JDKhMJZxvxuNUYjyZFCpF6/THBS5Zes="
     ];
 
     trusted-substituters = [ "root" "0x77" ];

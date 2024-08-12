@@ -1,0 +1,24 @@
+name: "test nix-darwin"
+
+on:
+  pull_request:
+  push:
+
+jobs:
+  test:
+    runs-on: macos-14-xlarge
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Nix
+        uses: DeterminateSystems/nix-installer-action@main
+
+      - uses: cachix/cachix-action@v14
+        with:
+          name: workstation
+          authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
+
+      - name: install yadm
+        run: brew install yadm
+
+      - run: yadm bootstrap

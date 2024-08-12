@@ -106,5 +106,7 @@
     jetbrains-mono
     texlivePackages.latexmk
     texstudio
+    direnv
+    devenv
   ];
 }

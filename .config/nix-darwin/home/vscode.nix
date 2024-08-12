@@ -57,6 +57,8 @@
         "editor.defaultFormatter" = "jnoortheen.nix-ide";
       };
       "git.autofetch" = true;
+      "cody.telemetry.level" = "off";
+      "openctx.providers" = { };
     };
 
     extensions = with pkgs.vscode-extensions;

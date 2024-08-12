@@ -2,21 +2,29 @@
 
 cd $HOME
 
-# Check for Command Line Tools
-if ! xcode-select -p &>/dev/null; then
-  echo "Command Line Tools not found. Installing..."
-  xcode-select --install
-  read -p "Press enter when the installation is complete"
+NIX_ONLY=false
+if [[ "$1" == "--nix-only" ]]; then
+  NIX_ONLY=true
 fi
 
-# Check for Rosetta on Apple Silicon Macs
-if [[ $(uname -m) == 'arm64' ]]; then
-  if ! /usr/bin/pgrep oahd >/dev/null 2>&1; then
-    echo "Rosetta is not installed. Installing..."
-    softwareupdate --install-rosetta --agree-to-license
+if [ "$NIX_ONLY" = false ]; then
+  # Check for Command Line Tools
+  if ! xcode-select -p &>/dev/null; then
+    echo "Command Line Tools not found. Installing..."
+    xcode-select --install
+    read -p "Press enter when the installation is complete"
+  fi
+
+  # Check for Rosetta on Apple Silicon Macs
+  if [[ $(uname -m) == 'arm64' ]]; then
+    if ! /usr/bin/pgrep oahd >/dev/null 2>&1; then
+      echo "Rosetta is not installed. Installing..."
+      softwareupdate --install-rosetta --agree-to-license
+    fi
   fi
 fi
 
+# Nix installation and configuration
 if ! command -v nix &>/dev/null; then
   echo "Nix not found. Installing Nix..."
   curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
@@ -29,15 +37,17 @@ FLAKE=${FLAKE:="$HOME/.config/nix-darwin"}
 echo "Applying Nix configuration from $FLAKE..."
 nix run nix-darwin --experimental-features 'nix-command flakes' -- switch --flake $FLAKE || exit 1
 
-echo "Setting up desktop wallpaper to $(dirname "$0")/assets/dynamic.heic"
-osascript -e "tell application \"System Events\" to tell every desktop to set picture to \"$(dirname "$0")/assets/dynamic.heic\" as POSIX file"
+if [ "$NIX_ONLY" = false ]; then
+  echo "Setting up desktop wallpaper to $(dirname "$0")/assets/dynamic.heic"
+  osascript -e "tell application \"System Events\" to tell every desktop to set picture to \"$(dirname "$0")/assets/dynamic.heic\" as POSIX file"
 
-if ! keybase whoami &>/dev/null; then
-  read -p "Do you want to use Keybase for PGP key management? (y/n) " use_keybase
+  if ! keybase whoami &>/dev/null; then
+    read -p "Do you want to use Keybase for PGP key management? (y/n) " use_keybase
 
-  if [ "$use_keybase" = "y" ]; then
-    echo "Not logged in to Keybase. Please log in."
-    keybase login
-    keybase pgp pull-private --all
+    if [ "$use_keybase" = "y" ]; then
+      echo "Not logged in to Keybase. Please log in."
+      keybase login
+      keybase pgp pull-private --all
+    fi
   fi
 fi
