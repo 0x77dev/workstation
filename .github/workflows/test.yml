@@ -21,4 +21,4 @@ jobs:
       - name: using known hostname
         run: sudo scutil --set HostName github-macos-runner.0x77.computer
 
-      - run: ~/.config/yadm/bootstrap --nix-only
+      - run: .config/yadm/bootstrap --nix-only
