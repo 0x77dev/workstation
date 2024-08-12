@@ -99,6 +99,38 @@
         ];
       };
 
+      darwinConfigurations."github-macos-runner" = nix-darwin.lib.darwinSystem {
+        system = "aarch64-darwin";
+        modules = [
+          ./configuration.nix
+
+          home-manager.darwinModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.backupFileExtension = "nixhomemgrbak";
+            home-manager.users."0x77" = import ./home;
+          }
+
+          nix-homebrew.darwinModules.nix-homebrew
+          {
+            nix-homebrew = {
+              enable = true;
+              enableRosetta = true;
+              autoMigrate = true;
+              user = "0x77";
+
+              taps = {
+                "homebrew/homebrew-core" = homebrew-core;
+                "homebrew/homebrew-cask" = homebrew-cask;
+                "homebrew/homebrew-bundle" = homebrew-bundle;
+              };
+              mutableTaps = true;
+            };
+          }
+        ];
+      };
+
       # Expose the package set, including overlays, for convenience.
       darwinPackages = self.darwinConfigurations."0x77beefy".pkgs;
     };

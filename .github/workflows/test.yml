@@ -21,4 +21,7 @@ jobs:
       - name: install yadm
         run: brew install yadm
 
-      - run: yadm bootstrap
+      - name: using known hostname
+        run: sudo scutil --set HostName github-macos-runner.0x77.computer
+
+      - run: yadm clone --bootstrap https://github.com/${{ github.repository }}
