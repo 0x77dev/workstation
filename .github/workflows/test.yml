@@ -18,12 +18,7 @@ jobs:
           name: workstation
           authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
 
-      - name: install yadm
-        run: brew install yadm
-
       - name: using known hostname
         run: sudo scutil --set HostName github-macos-runner.0x77.computer
 
-      - run: yadm clone https://github.com/${{ github.repository }}
-
-      - run: yadm bootstrap --nix-only
+      - run: ~/.config/yadm/bootstrap --nix-only
