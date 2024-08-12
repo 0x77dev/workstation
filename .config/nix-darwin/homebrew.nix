@@ -5,7 +5,6 @@
     enable = true;
     global.autoUpdate = false;
     onActivation.autoUpdate = true;
-    onActivation.cleanup = "uninstall";
     onActivation.upgrade = true;
 
     casks = [
@@ -33,8 +32,12 @@
       "orbstack"
       "slack"
       "linear-linear"
-      "gitbutler"
       "zoom"
+      "steam"
+      "keka"
+      "font-jetbrains-mono-nerd-font"
+      "zulu"
+      "miniconda"
     ];
 
     masApps = {

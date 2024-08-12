@@ -10,6 +10,7 @@
     ./browser.nix
     ./ssh.nix
     ./neovim.nix
+    ./fonts.nix
   ];
 
   home.packages = [
@@ -21,10 +22,6 @@
     pkgs.gh
     pkgs.neovim-unwrapped
 
-    # Fonts
-    (pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
-    pkgs.jetbrains-mono
-
     # Scripts
     (pkgs.writeShellScriptBin "workstation-update" (builtins.readFile ./scripts/update))
     (pkgs.writeShellScriptBin "workstation-commit" (builtins.readFile ./scripts/commit))
@@ -34,7 +31,6 @@
     PROJECT_PATHS = "~/Projects/*";
   };
 
-  fonts.fontconfig.enable = true;
   programs.home-manager.enable = true;
   home.stateVersion = "24.11";
 }

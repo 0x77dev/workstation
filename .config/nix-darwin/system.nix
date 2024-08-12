@@ -43,13 +43,22 @@
     dscl . -create /Users/0x77 UserShell /run/current-system/sw/bin/fish
   '';
 
-  environment.shells = [ pkgs.fish ];
   users.users."0x77" = {
     home = "/Users/0x77";
     shell = pkgs.fish;
   };
 
   security.pam.enableSudoTouchIdAuth = true;
+
+  environment.variables = {
+    REQUESTS_CA_BUNDLE="/etc/ssl/certs/ca-certificates.crt";
+  };
+
+  environment.shells = [ 
+    pkgs.bashInteractive 
+    pkgs.zsh
+    pkgs.fish
+  ];
 
   environment.systemPackages = with pkgs; [
     vscode
@@ -93,5 +102,9 @@
     kubectl
     docker
     ffmpeg
+    android-tools
+    jetbrains-mono
+    texlivePackages.latexmk
+    texstudio
   ];
 }

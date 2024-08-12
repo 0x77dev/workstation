@@ -14,6 +14,8 @@
         end
       end
       fish_add_path /opt/homebrew/bin
+      fish_add_path $HOME/.bun/bin
+      eval "$(conda "shell.fish" hook)"
     '';
 
     shellAliases = { dc = "docker compose"; };

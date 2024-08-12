@@ -13,9 +13,12 @@
       "editor.fontLigatures" = true;
       "editor.detectIndentation" = true;
       "editor.accessibilitySupport" = "off";
-      "editor.fontSize" = 14;
+      "editor.fontSize" = 16;
       "workbench.iconTheme" = "catppuccin-mocha";
       "workbench.colorTheme" = "GitHub Dark Default";
+      "workbench.preferredDarkColorTheme" = "GitHub Dark Default";
+      "workbench.preferredLightColorTheme" = "GitHub Light Default";
+      "window.autoDetectColorScheme" = true;
       "telemetry.telemetryLevel" = "off";
       "editor.formatOnSave" = true;
       "files.autoSave" = "afterDelay";
@@ -49,6 +52,11 @@
       "direnv.path.executable" = "${pkgs.direnv}/bin/direnv";
       "git.confirmSync" = false;
       "editor.defaultFormatter" = "esbenp.prettier-vscode";
+      "eslint.format.enable" = true;
+      "[nix]" = {
+        "editor.defaultFormatter" = "jnoortheen.nix-ide";
+      };
+      "git.autofetch" = true;
     };
 
     extensions = with pkgs.vscode-extensions;
@@ -80,6 +88,7 @@
         supermaven.supermaven
         streetsidesoftware.code-spell-checker
         vadimcn.vscode-lldb
+        bierner.markdown-mermaid
       ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
         {
           name = "cody-ai";
