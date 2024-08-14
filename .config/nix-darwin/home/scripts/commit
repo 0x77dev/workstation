@@ -1,5 +1,0 @@
-#!/bin/bash
-
-yadm add $HOME/.config/nix-darwin
-yadm commit -m "nix-darwin: $(date) checkpoint"
-yadm push

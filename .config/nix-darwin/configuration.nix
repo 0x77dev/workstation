@@ -1,7 +1,15 @@
-{ config, lib, inputs, pkgs, homebrew, ... }:
+{ ... }:
 
 {
-  imports = [ ./nix.nix ./system.nix ./homebrew.nix ];
+  imports = [
+    ./nix.nix
+    ./system.nix
+    ./homebrew.nix
+    ./shell.nix
+    ./users.nix
+    ./defaults.nix
+    ./security.nix
+  ];
 
   # Used for backwards compatibility, please read the changelog before changing.
   # $ darwin-rebuild changelog

@@ -38,6 +38,8 @@
       "font-jetbrains-mono-nerd-font"
       "zulu"
       "miniconda"
+      "ultimaker-cura"
+      "notion"
     ];
 
     masApps = {

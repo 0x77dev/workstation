@@ -14,17 +14,12 @@
   ];
 
   home.packages = [
-    # General
     pkgs.direnv
     pkgs.devenv
     pkgs.cachix
     pkgs.hello
     pkgs.gh
     pkgs.neovim-unwrapped
-
-    # Scripts
-    (pkgs.writeShellScriptBin "workstation-update" (builtins.readFile ./scripts/update))
-    (pkgs.writeShellScriptBin "workstation-commit" (builtins.readFile ./scripts/commit))
   ];
 
   home.sessionVariables = {

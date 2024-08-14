@@ -1,112 +1,61 @@
-{ config, lib, pkgs, ... }:
+{ pkgs, ... }:
 
 {
-  system.defaults = {
-    dock.autohide = true;
-    dock.show-recents = false;
-    dock.mru-spaces = false;
-    finder.AppleShowAllExtensions = true;
-    finder.AppleShowAllFiles = true;
-    finder.CreateDesktop = false;
-    finder.FXDefaultSearchScope = "SCcf"; # Current Folder
-    finder.QuitMenuItem = true;
-    NSGlobalDomain = {
-      _HIHideMenuBar = false;
-      AppleInterfaceStyle = "Dark";
-      AppleKeyboardUIMode = 3;
-      AppleScrollerPagingBehavior = true;
-      AppleShowAllExtensions = true;
-      AppleShowAllFiles = true;
-      InitialKeyRepeat = 10;
-      KeyRepeat = 2;
-      NSAutomaticSpellingCorrectionEnabled = false;
-      NSAutomaticWindowAnimationsEnabled = false;
-      NSWindowResizeTime = 0.0;
-      "com.apple.sound.beep.feedback" = 0;
-      "com.apple.trackpad.scaling" = 2.0;
-    };
-    menuExtraClock.ShowSeconds = true;
-    CustomUserPreferences = {
-      "/Users/0x77/Library/Preferences/ByHost/com.apple.controlcenter.plist" = {
-        "Bluetooth" = 18;
-        "Sound" = 16;
-        "BatteryShowPercentage" = 1;
-      };
-      "/Users/0x77/Library/Preferences/ByHost/com.apple.Spotlight.plist" = {
-        "MenuItemHidden" = 1;
-      };
-    };
-    # universalaccess.closeViewScrollWheelToggle = true; # crashes...
-  };
-
-  system.activationScripts.setFishAsShell.text = ''
-    dscl . -create /Users/0x77 UserShell /run/current-system/sw/bin/fish
+  system.activationScripts.installRosetta.text = ''
+    sudo softwareupdate --install-rosetta --agree-to-license
   '';
 
-  users.users."0x77" = {
-    home = "/Users/0x77";
-    shell = pkgs.fish;
-  };
-
-  security.pam.enableSudoTouchIdAuth = true;
-
   environment.variables = {
-    REQUESTS_CA_BUNDLE="/etc/ssl/certs/ca-certificates.crt";
+    REQUESTS_CA_BUNDLE = "/etc/ssl/certs/ca-certificates.crt";
   };
-
-  environment.shells = [ 
-    pkgs.bashInteractive 
-    pkgs.zsh
-    pkgs.fish
-  ];
 
   environment.systemPackages = with pkgs; [
-    vscode
-    kitty
-    vim
-    curl
-    gitAndTools.gitFull
-    git-crypt
-    fish
-    neovim
-    nodePackages.nodejs
-    bun
-    cargo
-    nixpkgs-fmt
-    nixfmt-classic
-    yadm
-    bat
-    chafa
-    hexyl
-    fd
-    eza
-    ripgrep
-    procs
-    broot
-    yazi
-    gh
-    fzf
-    direnv
-    devenv
-    cachix
-    btop
-    httpie
-    binwalk
-    jq
-    yq
-    nmap
-    nixd
-    hwatch
-    shell-gpt
-    awscli2
-    kubectl
-    docker
-    ffmpeg
     android-tools
-    jetbrains-mono
-    texlivePackages.latexmk
-    texstudio
-    direnv
+    awscli2
+    bat
+    binwalk
+    broot
+    btop
+    bun
+    cachix
+    cargo
+    chafa
+    charm
+    curl
     devenv
+    devenv
+    direnv
+    direnv
+    docker
+    eza
+    fd
+    ffmpeg
+    fish
+    fzf
+    gh
+    glow
+    git-crypt
+    gitAndTools.gitFull
+    hexyl
+    httpie
+    hwatch
+    jetbrains-mono
+    jq
+    kitty
+    kubectl
+    neovim
+    nixd
+    nixfmt-classic
+    nixpkgs-fmt
+    nmap
+    nodePackages.nodejs
+    procs
+    ripgrep
+    shell-gpt
+    vim
+    vscode
+    yadm
+    yazi
+    yq
   ];
 }
