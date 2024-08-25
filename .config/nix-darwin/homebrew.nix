@@ -40,6 +40,7 @@
       "miniconda"
       "ultimaker-cura"
       "notion"
+      "obsidian"
     ];
 
     masApps = {

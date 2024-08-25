@@ -15,6 +15,8 @@
       end
       fish_add_path /opt/homebrew/bin
       fish_add_path $HOME/.bun/bin
+      fish_add_path $HOME/.local/bin
+      # test -f $HOME/.config/op/plugins.sh && source $HOME/.config/op/plugins.sh
       eval "$(conda "shell.fish" hook)"
     '';
 

@@ -57,5 +57,8 @@
     yadm
     yazi
     yq
+    graphite-cli
+    minio-client
+    python312Packages.huggingface-hub
   ];
 }
