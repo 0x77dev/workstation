@@ -53,9 +53,7 @@
       "git.confirmSync" = false;
       "editor.defaultFormatter" = "esbenp.prettier-vscode";
       "eslint.format.enable" = true;
-      "[nix]" = {
-        "editor.defaultFormatter" = "jnoortheen.nix-ide";
-      };
+      "[nix]" = { "editor.defaultFormatter" = "jnoortheen.nix-ide"; };
       "git.autofetch" = true;
       "cody.telemetry.level" = "off";
       "openctx.providers" = { };
@@ -91,6 +89,7 @@
         streetsidesoftware.code-spell-checker
         vadimcn.vscode-lldb
         bierner.markdown-mermaid
+        ms-toolsai.jupyter
       ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
         {
           name = "cody-ai";

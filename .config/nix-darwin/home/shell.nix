@@ -39,6 +39,10 @@
         name = "bass";
         src = pkgs.fishPlugins.bass.src;
       }
+      {
+        name = "z";
+        src = pkgs.fishPlugins.z.src;
+      }
     ];
   };
 

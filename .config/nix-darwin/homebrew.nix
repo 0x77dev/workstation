@@ -41,6 +41,7 @@
       "ultimaker-cura"
       "notion"
       "obsidian"
+      "cursor"
     ];
 
     masApps = {
