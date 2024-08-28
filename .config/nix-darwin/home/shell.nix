@@ -1,11 +1,24 @@
 { config, lib, inputs, pkgs, ... }:
 
-{
-  programs.bash.enable = true;
-  programs.zsh.enable = true;
+let
+  commonAliases = {
+    aria2p = "aria2p -s aria2";
+    pbdownload = ''aria2p -s aria2 add "$(pbpaste)"'';
+  };
+in {
+  programs.bash = {
+    enable = true;
+    shellAliases = commonAliases;
+  };
+
+  programs.zsh = {
+    enable = true;
+    shellAliases = commonAliases;
+  };
+
   programs.fish = {
     enable = true;
-
+    shellAliases = commonAliases;
     interactiveShellInit = ''
       set fish_greeting # Disable greeting
       for p in /run/current-system/sw/bin
@@ -16,12 +29,10 @@
       fish_add_path /opt/homebrew/bin
       fish_add_path $HOME/.bun/bin
       fish_add_path $HOME/.local/bin
-      # test -f $HOME/.config/op/plugins.sh && source $HOME/.config/op/plugins.sh
-      eval "$(conda "shell.fish" hook)"
+      if command -v conda >/dev/null 2>&1
+        eval "$(conda "shell.fish" hook)"
+      end
     '';
-
-    shellAliases = { dc = "docker compose"; };
-
     plugins = [
       {
         name = "git-abbr";

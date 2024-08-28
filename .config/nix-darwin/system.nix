@@ -62,5 +62,8 @@
     python312Packages.huggingface-hub
     git-lfs
     git-crypt
+    aria2
+    # python312Packages.aria2p / installed via pipx
+    delta
   ];
 }
