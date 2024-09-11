@@ -11,10 +11,7 @@
 
   nix.settings = {
     substituters =
-      [
-        "https://devenv.cachix.org"
-        "https://workstation.cachix.org"
-      ];
+      [ "https://devenv.cachix.org" "https://workstation.cachix.org" ];
 
     trusted-public-keys = [
       "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw="
@@ -31,6 +28,20 @@
   nix.extraOptions = ''
     extra-platforms = x86_64-darwin aarch64-darwin
   '';
+
+  nix.distributedBuilds = true;
+
+  nix.buildMachines = [
+
+    {
+      hostName = "ubuntu.0x77.computer";
+      sshUser = "root";
+      sshKey = "/var/root/.ssh/main.pub";
+      systems = [ "x86_64-linux" "i686-linux" ];
+      maxJobs = 128;
+      supportedFeatures = [ "big-parallel" "kvm" "nixos-test" ];
+    }
+  ];
 
   nix.gc.automatic = true;
 }

@@ -2,6 +2,8 @@
   description = "environment for my mac";
 
   inputs = {
+    # determinate.url =
+    #   "https://flakehub.com/f/DeterminateSystems/determinate/0.1";
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
     nix-darwin = {
@@ -31,21 +33,14 @@
     };
   };
 
-  outputs =
-    inputs@{ self
-    , nix-darwin
-    , nix-homebrew
-    , homebrew-core
-    , homebrew-cask
-    , nixpkgs
-    , homebrew-bundle
-    , home-manager
-    }: {
+  outputs = inputs@{ self, nix-darwin, nix-homebrew, homebrew-core
+    , homebrew-cask, nixpkgs, homebrew-bundle, home-manager }: {
       # Build darwin flake using:
       # $ darwin-rebuild build --flake .#0x77macbook2021
       darwinConfigurations."0x77macbook2021" = nix-darwin.lib.darwinSystem {
         system = "aarch64-darwin";
         modules = [
+          # determinate.darwinModules.default
           ./configuration.nix
 
           home-manager.darwinModules.home-manager
@@ -78,6 +73,7 @@
       darwinConfigurations."0x77beefy" = nix-darwin.lib.darwinSystem {
         system = "aarch64-darwin";
         modules = [
+          # determinate.darwinModules.default
           ./configuration.nix
 
           home-manager.darwinModules.home-manager
@@ -110,6 +106,7 @@
       darwinConfigurations."github-macos-runner" = nix-darwin.lib.darwinSystem {
         system = "aarch64-darwin";
         modules = [
+          # determinate.darwinModules.default
           ./configuration.nix
 
           home-manager.darwinModules.home-manager

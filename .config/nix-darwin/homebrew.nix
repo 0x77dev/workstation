@@ -55,6 +55,7 @@
       "Copilot" = 1447330651;
       "Blackmagic RAW Speed Test" = 1466185689;
       "Parcel" = 639968404;
+      "Home Assistant" = 1099568401;
     };
   };
 }
