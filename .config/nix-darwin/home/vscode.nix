@@ -5,7 +5,7 @@
     enable = true;
     enableUpdateCheck = false;
     enableExtensionUpdateCheck = false;
-    mutableExtensionsDir = false;
+    mutableExtensionsDir = true;
 
     userSettings = {
       "editor.inlineSuggest.suppressSuggestions" = true;
@@ -47,7 +47,7 @@
 
       "security.workspace.trust.enabled" = false;
       "nix.enableLanguageServer" = true;
-      "nix.serverPath" = "${pkgs.nixd}/bin/nixd";
+      "nix.serverPath" = "/run/current-system/sw/bin/nixd";
       "nix.formatterPath" = "${pkgs.nixfmt-classic}/bin/nixpkgs-fmt";
       "direnv.path.executable" = "${pkgs.direnv}/bin/direnv";
       "git.confirmSync" = false;

@@ -2,8 +2,6 @@
   description = "environment for my mac";
 
   inputs = {
-    # determinate.url =
-    #   "https://flakehub.com/f/DeterminateSystems/determinate/0.1";
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
     nix-darwin = {
@@ -40,7 +38,6 @@
       darwinConfigurations."0x77macbook2021" = nix-darwin.lib.darwinSystem {
         system = "aarch64-darwin";
         modules = [
-          # determinate.darwinModules.default
           ./configuration.nix
 
           home-manager.darwinModules.home-manager
@@ -73,7 +70,6 @@
       darwinConfigurations."0x77beefy" = nix-darwin.lib.darwinSystem {
         system = "aarch64-darwin";
         modules = [
-          # determinate.darwinModules.default
           ./configuration.nix
 
           home-manager.darwinModules.home-manager
