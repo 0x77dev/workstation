@@ -7,7 +7,7 @@
     delta = { enable = true; };
     lfs = { enable = true; };
     signing = {
-      key = "3631F1294C1793261F2BD420043FAD613914D7E2";
+      key = "C33BFD3230B660CF147762D2BF5C81B531164955";
       signByDefault = true;
     };
     userName = "Mykhailo Marynenko";

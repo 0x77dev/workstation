@@ -7,6 +7,8 @@
     onActivation.autoUpdate = true;
     onActivation.upgrade = true;
 
+    brews = [ "deno" "yubikey-personalization" "ykman" ];
+
     casks = [
       "arc"
       "spotify"
@@ -42,6 +44,7 @@
       "notion"
       "obsidian"
       "cursor"
+      "zed"
     ];
 
     masApps = {

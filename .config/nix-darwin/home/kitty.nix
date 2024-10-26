@@ -3,7 +3,7 @@
 {
   programs.kitty = {
     enable = true;
-    theme = "Catppuccin-Mocha";
+    themeFile = "GitHub_Dark";
     font = { name = "JetBrains Mono"; };
   };
 }
