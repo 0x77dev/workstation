@@ -1,8 +1,7 @@
 { pkgs, ... }:
-let
-  wallpaperPath = ./assets/wallpaper.heic;
-in
-{
+let wallpaperPath = ./assets/wallpaper.heic;
+in {
+  programs.fish.enable = true;
   users.users."0x77" = {
     home = "/Users/0x77";
     shell = pkgs.fish;

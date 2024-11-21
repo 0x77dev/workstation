@@ -31,108 +31,52 @@
     };
   };
 
-  outputs = inputs@{ self, nix-darwin, nix-homebrew, homebrew-core
-    , homebrew-cask, nixpkgs, homebrew-bundle, home-manager }: {
-      # Build darwin flake using:
-      # $ darwin-rebuild build --flake .#0x77macbook2021
-      darwinConfigurations."0x77macbook2021" = nix-darwin.lib.darwinSystem {
-        system = "aarch64-darwin";
-        modules = [
-          ./configuration.nix
+  outputs = { self, nix-darwin, nix-homebrew, homebrew-core, homebrew-cask
+    , nixpkgs, homebrew-bundle, home-manager }@inputs: {
 
-          home-manager.darwinModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.backupFileExtension = "nixhomemgrbak";
-            home-manager.users."0x77" = import ./home;
-          }
+      darwinConfigurations = let
+        mkDarwinConfig = hostname:
+          nix-darwin.lib.darwinSystem {
+            system = "aarch64-darwin";
+            specialArgs = inputs;
+            modules = [
+              ./configuration.nix
 
-          nix-homebrew.darwinModules.nix-homebrew
-          {
-            nix-homebrew = {
-              enable = true;
-              enableRosetta = true;
-              autoMigrate = true;
-              user = "0x77";
+              home-manager.darwinModules.home-manager
+              {
+                home-manager = {
+                  useGlobalPkgs = true;
+                  useUserPackages = true;
+                  backupFileExtension = "nixhomemgrbak";
+                  users."0x77" = import ./home;
+                };
+              }
 
-              taps = {
-                "homebrew/homebrew-core" = homebrew-core;
-                "homebrew/homebrew-cask" = homebrew-cask;
-                "homebrew/homebrew-bundle" = homebrew-bundle;
-              };
-              mutableTaps = true;
-            };
-          }
-        ];
+              nix-homebrew.darwinModules.nix-homebrew
+              {
+                nix-homebrew = {
+                  enable = true;
+                  enableRosetta = true;
+                  autoMigrate = true;
+                  user = "0x77";
+
+                  taps = {
+                    "homebrew/homebrew-core" = homebrew-core;
+                    "homebrew/homebrew-cask" = homebrew-cask;
+                    "homebrew/homebrew-bundle" = homebrew-bundle;
+                  };
+                  mutableTaps = true;
+                };
+              }
+            ];
+          };
+      in {
+        "0x77macbook2021" = mkDarwinConfig "0x77macbook2021";
+        "0x77beefy" = mkDarwinConfig "0x77beefy";
+        "github-macos-runner" = mkDarwinConfig "github-macos-runner";
       };
 
-      darwinConfigurations."0x77beefy" = nix-darwin.lib.darwinSystem {
-        system = "aarch64-darwin";
-        modules = [
-          ./configuration.nix
-
-          home-manager.darwinModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.backupFileExtension = "nixhomemgrbak";
-            home-manager.users."0x77" = import ./home;
-          }
-
-          nix-homebrew.darwinModules.nix-homebrew
-          {
-            nix-homebrew = {
-              enable = true;
-              enableRosetta = true;
-              autoMigrate = true;
-              user = "0x77";
-
-              taps = {
-                "homebrew/homebrew-core" = homebrew-core;
-                "homebrew/homebrew-cask" = homebrew-cask;
-                "homebrew/homebrew-bundle" = homebrew-bundle;
-              };
-              mutableTaps = true;
-            };
-          }
-        ];
-      };
-
-      darwinConfigurations."github-macos-runner" = nix-darwin.lib.darwinSystem {
-        system = "aarch64-darwin";
-        modules = [
-          # determinate.darwinModules.default
-          ./configuration.nix
-
-          home-manager.darwinModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.backupFileExtension = "nixhomemgrbak";
-            home-manager.users."0x77" = import ./home;
-          }
-
-          nix-homebrew.darwinModules.nix-homebrew
-          {
-            nix-homebrew = {
-              enable = true;
-              enableRosetta = true;
-              autoMigrate = true;
-              user = "0x77";
-
-              taps = {
-                "homebrew/homebrew-core" = homebrew-core;
-                "homebrew/homebrew-cask" = homebrew-cask;
-                "homebrew/homebrew-bundle" = homebrew-bundle;
-              };
-              mutableTaps = true;
-            };
-          }
-        ];
-      };
-
-      # Expose the package set, including overlays, for convenience.
+      # Expose the package set for convenience
       darwinPackages = self.darwinConfigurations."0x77beefy".pkgs;
     };
 }

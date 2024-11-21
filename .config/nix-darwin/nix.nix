@@ -22,7 +22,6 @@
     trusted-users = [ "root" "0x77" ];
     experimental-features = "nix-command flakes";
     extra-nix-path = "nixpkgs=flake:nixpkgs";
-    auto-optimise-store = true;
   };
 
   nix.extraOptions = ''
@@ -44,4 +43,5 @@
   ];
 
   nix.gc.automatic = true;
+  nix.optimise.automatic = true;
 }
