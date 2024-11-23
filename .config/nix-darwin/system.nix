@@ -63,5 +63,6 @@
     aria2
     # python312Packages.aria2p / installed via pipx
     delta
+    lazydocker
   ];
 }
